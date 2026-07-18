@@ -308,6 +308,17 @@ body{background:linear-gradient(175deg,#fbeee9 0%,#f6e2db 30%,#fdf4f0 50%,#f3dcd
 /* Glow dorado suave detrás de texto claro */
 .vg-glow{text-shadow:0 1px 10px rgba(0,0,0,.5),0 0 22px var(--gold-glow),0 0 40px rgba(201,162,39,.16)}
 .vg-glow-soft{text-shadow:0 0 16px var(--gold-glow)}
+/* Título que "respira" — glow dorado pulsante (mantiene el color base) */
+@keyframes vgBreath{0%,100%{text-shadow:0 0 7px rgba(201,162,39,.14)}50%{text-shadow:0 0 20px rgba(201,162,39,.40),0 0 40px rgba(201,162,39,.16)}}
+.vg-breath{animation:vgBreath 3.8s ease-in-out infinite}
+/* Subrayado dorado que late bajo los subtítulos/eyebrows destacados */
+@keyframes vgUnderline{0%,100%{opacity:.35;transform:scaleX(.6)}50%{opacity:1;transform:scaleX(1)}}
+/* Frase/párrafo con leve flotación viva */
+@keyframes vgFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+.vg-float{animation:vgFloat 5s ease-in-out infinite}
+/* Cursor/acento que titila al final de una línea */
+@keyframes vgTwinkleTxt{0%,100%{opacity:.55}50%{opacity:1}}
+.vg-twinkle{animation:vgTwinkleTxt 2.4s ease-in-out infinite}
 /* Fondo Art Déco: rayos sunburst dorados muy tenues (reemplaza flores) */
 .vg-rays{position:absolute;inset:0;pointer-events:none;z-index:-1;overflow:hidden;background:repeating-conic-gradient(from 0deg at 50% -6%,rgba(201,162,39,.055) 0deg 1.3deg,transparent 1.3deg 7deg);-webkit-mask-image:linear-gradient(to bottom,#000 0,transparent 74%);mask-image:linear-gradient(to bottom,#000 0,transparent 74%)}
 .vg-rays.up{transform:rotate(180deg)}
@@ -333,7 +344,7 @@ body{background:linear-gradient(175deg,#fbeee9 0%,#f6e2db 30%,#fdf4f0 50%,#f3dcd
 .vg-bubble{position:absolute;bottom:-24px;border-radius:50%;pointer-events:none;will-change:transform,opacity;background:radial-gradient(circle at 35% 30%,rgba(255,248,224,.9),rgba(201,162,39,.25) 60%,transparent 72%);box-shadow:0 0 6px var(--gold-glow)}
 /* Eyebrow que "se enciende" al entrar en viewport */
 @keyframes vgIgnite{0%{opacity:.45;text-shadow:none}28%{opacity:1;text-shadow:0 0 15px var(--gold-glow)}52%{opacity:.65;text-shadow:0 0 5px var(--gold-glow)}100%{opacity:1;text-shadow:0 0 9px rgba(201,162,39,.28)}}
-.vg-ignite{animation:vgIgnite 1s ease-out both}
+.vg-ignite{animation:vgIgnite 1s ease-out,vgBreath 3.8s ease-in-out 1s infinite}
 /* ═══════════ VEGAS DOMINANTE · degradados + cards doradas + sheen ═══════════ */
 /* Fondos con degradado vivo de la paleta (reemplazan planos) */
 .vg-grad-warm{background:radial-gradient(135% 80% at 50% -8%,rgba(201,162,39,.16),transparent 50%),linear-gradient(168deg,#fbeee9 0%,#f2dbd3 55%,#ead0c6 100%)!important}
@@ -401,7 +412,7 @@ body{background:linear-gradient(175deg,#fbeee9 0%,#f6e2db 30%,#fdf4f0 50%,#f3dcd
   <section class="sec rv vg-grad-warm" style="text-align:center;overflow:hidden">
     <div class="vg-rays"></div>
     <div class="orn"><div class="orn-line"></div><div class="orn-diamond-sm"></div><div class="orn-diamond"></div><div class="orn-diamond-sm"></div><div class="orn-line"></div></div>
-    <h1 class="heading" style="color:#722f37"><span style="font-family:'Dancing Script',cursive;font-weight:700">D</span>aniela y Ladislao</h1>
+    <h1 class="heading vg-breath" style="color:#722f37"><span style="font-family:'Dancing Script',cursive;font-weight:700">D</span>aniela y Ladislao</h1>
     <div class="orn bot"><div class="orn-line"></div><div class="orn-diamond-sm"></div><div class="orn-diamond"></div><div class="orn-diamond-sm"></div><div class="orn-line"></div></div>
     <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;color:var(--accent);line-height:1.9;margin-top:24px;opacity:.85;max-width:340px;margin-left:auto;margin-right:auto">
       Dicen que lo que pasa en Las Vegas,<br>se queda en Las Vegas…<br>pero esta historia<br>queremos celebrarla con ustedes.
@@ -420,7 +431,7 @@ body{background:linear-gradient(175deg,#fbeee9 0%,#f6e2db 30%,#fdf4f0 50%,#f3dcd
   <section class="sec rv vg-grad-blush" style="text-align:center;overflow:hidden">
     <div class="vg-lattice"></div>
     <span class="eyebrow">Con la bendición de</span>
-    <h2 class="heading-sm" style="color:#722f37">Nuestros Padres</h2>
+    <h2 class="heading-sm vg-breath" style="color:#722f37">Nuestros Padres</h2>
     <div class="orn" style="margin-top:16px"><div class="orn-line"></div><div class="orn-diamond-sm"></div><div class="orn-diamond"></div><div class="orn-diamond-sm"></div><div class="orn-line"></div></div>
     <div class="fam-grid" style="grid-template-columns:1fr;max-width:380px;margin:28px auto 0">
       <div class="fam-card">
@@ -470,7 +481,7 @@ body{background:linear-gradient(175deg,#fbeee9 0%,#f6e2db 30%,#fdf4f0 50%,#f3dcd
   <!-- UBICACIÓN -->
   <section class="sec rv vg-grad-warm" style="text-align:center">
     <span class="eyebrow">Dónde Celebramos</span>
-    <h2 class="heading-sm" style="color:#722f37">Graceland Wedding Chapel</h2>
+    <h2 class="heading-sm vg-breath" style="color:#722f37">Graceland Wedding Chapel</h2>
     <p class="sub" style="margin-top:6px;color:var(--gold);font-weight:600">Las Vegas, Nevada</p>
 
     <div class="card rv" style="max-width:380px;margin:24px auto 0">
@@ -498,7 +509,7 @@ body{background:linear-gradient(175deg,#fbeee9 0%,#f6e2db 30%,#fdf4f0 50%,#f3dcd
   <section class="sec rv vg-grad-warm" style="text-align:center;overflow:hidden">
     <div class="vg-rays"></div>
     <span class="eyebrow">Programa del Día</span>
-    <h2 class="heading-sm" style="color:#722f37">Itinerario</h2>
+    <h2 class="heading-sm vg-breath" style="color:#722f37">Itinerario</h2>
     <div class="orn" style="margin-top:16px"><div class="orn-line"></div><div class="orn-diamond-sm"></div><div class="orn-diamond"></div><div class="orn-diamond-sm"></div><div class="orn-line"></div></div>
     <div class="itin-list">
       <div class="itin-item rv"><div class="itin-dot"></div><div class="itin-time">Vie · 21</div><div class="itin-ev">Show en Las Vegas · por la noche</div></div>
@@ -510,7 +521,7 @@ body{background:linear-gradient(175deg,#fbeee9 0%,#f6e2db 30%,#fdf4f0 50%,#f3dcd
   <!-- DRESS CODE -->
   <section class="sec rv vg-grad-blush" style="text-align:center">
     <span class="eyebrow">Código de Vestimenta</span>
-    <h2 class="heading-sm" style="color:#722f37">Casual / Formal</h2>
+    <h2 class="heading-sm vg-breath" style="color:#722f37">Casual / Formal</h2>
     <div class="orn" style="margin-top:16px"><div class="orn-line"></div><div class="orn-diamond-sm"></div><div class="orn-diamond"></div><div class="orn-diamond-sm"></div><div class="orn-line"></div></div>
     <p class="dc-text" style="margin-top:22px">Ven cómodo y con estilo:<br>un código casual y formal<br>para disfrutar nuestra gran noche en Las Vegas.</p>
     <div class="dc-cols rv">
@@ -541,7 +552,7 @@ body{background:linear-gradient(175deg,#fbeee9 0%,#f6e2db 30%,#fdf4f0 50%,#f3dcd
   <section class="sec rv vg-grad-warm" style="text-align:center;overflow:hidden">
     <div class="vg-lattice"></div>
     <span class="eyebrow">Para tu estancia</span>
-    <h2 class="heading-sm" style="color:#722f37">Sugerencia de Hospedaje</h2>
+    <h2 class="heading-sm vg-breath" style="color:#722f37">Sugerencia de Hospedaje</h2>
     <div class="orn" style="margin-top:16px"><div class="orn-line"></div><div class="orn-diamond-sm"></div><div class="orn-diamond"></div><div class="orn-diamond-sm"></div><div class="orn-line"></div></div>
     <p class="dc-text" style="margin-top:20px;font-size:16px">Si vienes de fuera, te recomendamos<br>estos hoteles icónicos del Strip.</p>
 
@@ -552,7 +563,7 @@ body{background:linear-gradient(175deg,#fbeee9 0%,#f6e2db 30%,#fdf4f0 50%,#f3dcd
         <div class="hosp-track" id="hospTrack">
           <div class="hosp-slide">
             <div class="hosp-photo"><img src="hotel-paris.jpg" alt="Paris Las Vegas" loading="lazy"></div>
-            <div class="hosp-name">Paris Las Vegas</div>
+            <div class="hosp-name vg-breath">Paris Las Vegas</div>
             <div class="hosp-city">3655 S Las Vegas Blvd</div>
             <div class="hosp-btns">
               <a class="btn-hosp" href="https://maps.app.goo.gl/KvEkfTyAUxRFTHQBA" target="_blank" rel="noopener">
@@ -563,7 +574,7 @@ body{background:linear-gradient(175deg,#fbeee9 0%,#f6e2db 30%,#fdf4f0 50%,#f3dcd
           </div>
           <div class="hosp-slide">
             <div class="hosp-photo"><img src="hotel-nyny.jpg" alt="New York-New York Hotel & Casino" loading="lazy"></div>
-            <div class="hosp-name">New York-New York</div>
+            <div class="hosp-name vg-breath">New York-New York</div>
             <div class="hosp-city">3790 S Las Vegas Blvd</div>
             <div class="hosp-btns">
               <a class="btn-hosp" href="https://maps.app.goo.gl/9Ejvfmizzpkqqdmp8" target="_blank" rel="noopener">
@@ -574,7 +585,7 @@ body{background:linear-gradient(175deg,#fbeee9 0%,#f6e2db 30%,#fdf4f0 50%,#f3dcd
           </div>
           <div class="hosp-slide">
             <div class="hosp-photo"><img src="hotel-caesars.jpg" alt="Caesars Palace" loading="lazy"></div>
-            <div class="hosp-name">Caesars Palace</div>
+            <div class="hosp-name vg-breath">Caesars Palace</div>
             <div class="hosp-city">3570 S Las Vegas Blvd</div>
             <div class="hosp-btns">
               <a class="btn-hosp" href="https://maps.app.goo.gl/6GP3BwWK7FnMZuqU6" target="_blank" rel="noopener">
@@ -596,7 +607,7 @@ body{background:linear-gradient(175deg,#fbeee9 0%,#f6e2db 30%,#fdf4f0 50%,#f3dcd
   <!-- GALERÍA — RUEDA 3D -->
   <section id="galeria" class="marquee" aria-label="Galería de fotos">
     <p class="label fu" style="font-family:'Italiana',serif;font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);margin-bottom:10px">Nuestros momentos</p>
-    <h2 class="title fu" style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:32px;color:var(--dark);margin-bottom:6px">Momentos <span style="font-family:'Great Vibes',cursive;color:var(--accent);font-size:42px">juntos</span></h2>
+    <h2 class="title fu vg-breath" style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:32px;color:var(--dark);margin-bottom:6px">Momentos <span style="font-family:'Great Vibes',cursive;color:var(--accent);font-size:42px">juntos</span></h2>
     <div class="gal-header-ornament fu"></div>
     <div class="wheel-scene rv" id="wheel-scene">
       <div class="wheel-ring" id="wheel-ring">
