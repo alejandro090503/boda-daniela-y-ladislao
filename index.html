@@ -40,7 +40,7 @@
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{overflow-x:hidden;max-width:100vw}
 html{scroll-behavior:auto}
-body{background:var(--bg);color:var(--text);font-family:'Cormorant Garamond',serif;font-weight:500;font-size:18px;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{background:linear-gradient(175deg,#fbeee9 0%,#f6e2db 30%,#fdf4f0 50%,#f3dcd5 72%,#f7e6e0 100%);color:var(--text);font-family:'Cormorant Garamond',serif;font-weight:500;font-size:18px;-webkit-text-size-adjust:100%;text-size-adjust:100%}
 
 /* ── ENVELOPE ── */
 #envelope-screen{position:fixed;inset:0;z-index:9000;background:#FAF2F0;overflow:hidden;cursor:pointer}
@@ -313,6 +313,23 @@ body{background:var(--bg);color:var(--text);font-family:'Cormorant Garamond',ser
 /* Eyebrow que "se enciende" al entrar en viewport */
 @keyframes vgIgnite{0%{opacity:.45;text-shadow:none}28%{opacity:1;text-shadow:0 0 15px var(--gold-glow)}52%{opacity:.65;text-shadow:0 0 5px var(--gold-glow)}100%{opacity:1;text-shadow:0 0 9px rgba(201,162,39,.28)}}
 .vg-ignite{animation:vgIgnite 1s ease-out both}
+/* ═══════════ VEGAS DOMINANTE · degradados + cards doradas + sheen ═══════════ */
+/* Fondos con degradado vivo de la paleta (reemplazan planos) */
+.vg-grad-warm{background:radial-gradient(135% 80% at 50% -8%,rgba(201,162,39,.16),transparent 50%),linear-gradient(168deg,#fbeee9 0%,#f2dbd3 55%,#ead0c6 100%)!important}
+.vg-grad-blush{background:radial-gradient(120% 78% at 50% 0%,rgba(247,165,151,.22),transparent 55%),linear-gradient(160deg,#fdf3ef 0%,#f4ded7 68%,#eecfc7 100%)!important}
+.vg-grad-wine{background:radial-gradient(150% 95% at 50% -12%,#863b4c 0%,transparent 62%),linear-gradient(172deg,#7a3340 0%,#5c1f28 62%,#46141e 100%)!important}
+/* Cards estilo Vegas: marco dorado luminoso + fondo degradado champagne */
+.card,.fam-card,.dc-col{border:1px solid rgba(201,162,39,.5)!important;background:linear-gradient(158deg,#fffdf7 0%,#fbf0e4 100%)!important;box-shadow:0 10px 30px rgba(92,31,40,.12),0 0 22px rgba(201,162,39,.16)!important}
+.card::before,.fam-card::before{border-color:rgba(201,162,39,.32)!important}
+.gift-opt{border-color:rgba(201,162,39,.4)!important}
+/* Sheen dorado que barre al entrar en viewport (efecto scroll dominante) */
+.vg-sheen{position:relative;overflow:hidden}
+.vg-sheen::after{content:'';position:absolute;top:-10%;left:-75%;width:48%;height:120%;background:linear-gradient(105deg,transparent,rgba(255,244,214,.62),transparent);transform:skewX(-16deg);pointer-events:none;opacity:0;z-index:6}
+.vg-sheen.swept::after{animation:vgSheen 1.15s cubic-bezier(.4,0,.2,1)}
+@keyframes vgSheen{0%{left:-75%;opacity:0}15%{opacity:1}100%{left:140%;opacity:0}}
+/* Glow dorado en números y horas grandes */
+.cd-value,.itin-time{text-shadow:0 0 16px rgba(201,162,39,.20)}
+.loc-venue,.heading-sm{text-shadow:0 2px 22px rgba(201,162,39,.14)}
 @media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
 </style>
 </head>
@@ -360,7 +377,7 @@ body{background:var(--bg);color:var(--text);font-family:'Cormorant Garamond',ser
   </section>
 
   <!-- INVITACIÓN -->
-  <section class="sec rv" style="text-align:center;overflow:hidden">
+  <section class="sec rv vg-grad-warm" style="text-align:center;overflow:hidden">
     <div class="vg-rays"></div>
     <div class="orn"><div class="orn-line"></div><div class="orn-diamond-sm"></div><div class="orn-diamond"></div><div class="orn-diamond-sm"></div><div class="orn-line"></div></div>
     <h1 class="heading" style="color:#722f37"><span style="font-family:'Dancing Script',cursive;font-weight:700">D</span>aniela y Ladislao</h1>
@@ -379,7 +396,7 @@ body{background:var(--bg);color:var(--text);font-family:'Cormorant Garamond',ser
   </section>
 
   <!-- PADRES -->
-  <section class="sec rv" style="text-align:center;overflow:hidden">
+  <section class="sec rv vg-grad-blush" style="text-align:center;overflow:hidden">
     <div class="vg-lattice"></div>
     <span class="eyebrow">Con la bendición de</span>
     <h2 class="heading-sm" style="color:#722f37">Nuestros Padres</h2>
@@ -402,7 +419,7 @@ body{background:var(--bg);color:var(--text);font-family:'Cormorant Garamond',ser
   </section>
 
   <!-- CUENTA REGRESIVA -->
-  <section class="sec-sm rv" style="text-align:center;background:var(--surface)">
+  <section class="sec-sm rv vg-grad-warm" style="text-align:center">
     <span class="eyebrow">Faltan</span>
     <div class="card" style="max-width:380px;margin:0 auto">
       <div class="cd-row">
@@ -430,7 +447,7 @@ body{background:var(--bg);color:var(--text);font-family:'Cormorant Garamond',ser
   </section>
 
   <!-- UBICACIÓN -->
-  <section class="sec rv" style="text-align:center;background:var(--surface)">
+  <section class="sec rv vg-grad-warm" style="text-align:center">
     <span class="eyebrow">Dónde Celebramos</span>
     <h2 class="heading-sm" style="color:#722f37">Graceland Wedding Chapel</h2>
     <p class="sub" style="margin-top:6px;color:var(--gold);font-weight:600">Las Vegas, Nevada</p>
@@ -457,7 +474,7 @@ body{background:var(--bg);color:var(--text);font-family:'Cormorant Garamond',ser
   </section>
 
   <!-- ITINERARIO -->
-  <section class="sec rv" style="text-align:center;overflow:hidden">
+  <section class="sec rv vg-grad-warm" style="text-align:center;overflow:hidden">
     <div class="vg-rays"></div>
     <span class="eyebrow">Programa del Día</span>
     <h2 class="heading-sm" style="color:#722f37">Itinerario</h2>
@@ -470,7 +487,7 @@ body{background:var(--bg);color:var(--text);font-family:'Cormorant Garamond',ser
   </section>
 
   <!-- DRESS CODE -->
-  <section class="sec rv" style="text-align:center;background:var(--surface)">
+  <section class="sec rv vg-grad-blush" style="text-align:center">
     <span class="eyebrow">Código de Vestimenta</span>
     <h2 class="heading-sm" style="color:#722f37">Casual / Formal</h2>
     <div class="orn" style="margin-top:16px"><div class="orn-line"></div><div class="orn-diamond-sm"></div><div class="orn-diamond"></div><div class="orn-diamond-sm"></div><div class="orn-line"></div></div>
@@ -529,7 +546,7 @@ body{background:var(--bg);color:var(--text);font-family:'Cormorant Garamond',ser
   </section>
 
   <!-- MESA DE REGALOS -->
-  <section id="regalos" class="sec rv" style="text-align:center">
+  <section id="regalos" class="sec rv vg-grad-wine" style="text-align:center">
     <span class="eyebrow">Nuestro Mejor Regalo</span>
     <h2 class="heading vg-shimmer">Su Compañía</h2>
     <div class="orn" style="margin-top:16px"><div class="orn-line" style="background:linear-gradient(to right,transparent,rgba(191,146,128,.4),transparent)"></div><div class="orn-diamond-sm" style="background:var(--gold)"></div><div class="orn-diamond" style="background:var(--gold)"></div><div class="orn-diamond-sm" style="background:var(--gold)"></div><div class="orn-line" style="background:linear-gradient(to right,transparent,rgba(191,146,128,.4),transparent)"></div></div>
@@ -604,7 +621,7 @@ body{background:var(--bg);color:var(--text);font-family:'Cormorant Garamond',ser
   </section>
 
   <!-- FOOTER -->
-  <footer id="footer">
+  <footer id="footer" class="vg-grad-wine">
     <div class="orn" style="margin-bottom:24px"><div class="orn-line" style="background:linear-gradient(to right,transparent,rgba(191,146,128,.3),transparent)"></div><div class="orn-diamond-sm" style="background:var(--gold)"></div><div class="orn-diamond" style="background:var(--gold)"></div><div class="orn-diamond-sm" style="background:var(--gold)"></div><div class="orn-line" style="background:linear-gradient(to right,transparent,rgba(191,146,128,.3),transparent)"></div></div>
     <div class="footer-names rv vg-shimmer"><span style="font-family:'Dancing Script',cursive;font-weight:700">D</span>aniela y Ladislao</div>
     <div class="footer-date rv vg-glow-soft">22 · Agosto · 2026</div>
@@ -836,6 +853,19 @@ function initMain(){
     document.querySelectorAll('.eyebrow').forEach(function(eb){ ebObs.observe(eb); });
   } else {
     document.querySelectorAll('.eyebrow').forEach(function(eb){ eb.classList.add('vg-ignite'); });
+  }
+
+  /* Sheen dorado que barre los marcos cada vez que entran en viewport */
+  var sheenEls=document.querySelectorAll('.card,.fam-card,.dc-col');
+  sheenEls.forEach(function(el){ el.classList.add('vg-sheen'); });
+  if('IntersectionObserver' in window){
+    var sheenObs=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){ en.target.classList.add('swept'); }
+        else { en.target.classList.remove('swept'); }
+      });
+    },{threshold:.4});
+    sheenEls.forEach(function(el){ sheenObs.observe(el); });
   }
 
   /* Gallery — 3D Wheel */
