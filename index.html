@@ -166,6 +166,27 @@ body{background:linear-gradient(175deg,#fbeee9 0%,#f6e2db 30%,#fdf4f0 50%,#f3dcd
 .dc-cols{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:22px}
 .dc-col{background:var(--card);border:1px solid var(--border);border-radius:4px;padding:22px 14px;text-align:center}
 .dc-col-ttl{font-family:'Italiana',serif;font-size:13px;letter-spacing:.28em;text-transform:uppercase;color:var(--dark);margin-top:14px}
+.dc-fig{height:158px;width:auto;max-width:100%;display:block;margin:0 auto;filter:drop-shadow(0 7px 16px rgba(92,31,40,.20))}
+/* ── HOSPEDAJE carrusel (adaptado, acentos dorados Vegas) ── */
+.hosp-carousel{position:relative;max-width:340px;margin:28px auto 0}
+.hosp-viewport{overflow:hidden}
+.hosp-track{display:flex;transition:transform .45s cubic-bezier(.4,0,.2,1)}
+.hosp-slide{flex:0 0 100%;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;text-align:center;padding:8px 30px}
+.hosp-photo{width:190px;height:190px;border-radius:50%;overflow:hidden;border:3px solid rgba(201,162,39,.55);box-shadow:0 12px 34px rgba(92,31,40,.22),0 0 20px rgba(201,162,39,.24);margin-bottom:20px}
+.hosp-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.hosp-arrow{position:absolute;top:95px;transform:translateY(-50%);width:38px;height:38px;display:flex;align-items:center;justify-content:center;background:rgba(255,253,247,.78);border:1px solid rgba(201,162,39,.42);border-radius:50%;cursor:pointer;color:var(--champagne);z-index:2;padding:0;backdrop-filter:blur(3px);box-shadow:0 0 12px var(--gold-glow)}
+.hosp-arrow svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2}
+.hosp-arrow.prev{left:-4px}
+.hosp-arrow.next{right:-4px}
+.hosp-dots{display:flex;justify-content:center;gap:8px;margin-top:20px}
+.hosp-dots button{width:8px;height:8px;border-radius:50%;border:none;background:rgba(201,162,39,.3);cursor:pointer;padding:0;transition:background .25s,transform .25s}
+.hosp-dots button.active{background:var(--champagne);transform:scale(1.3);box-shadow:0 0 8px var(--gold-glow)}
+.hosp-name{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:23px;color:var(--dark);margin-bottom:5px;line-height:1.25}
+.hosp-city{font-family:'Italiana',serif;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--champagne);margin-bottom:16px}
+.hosp-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.btn-hosp{display:inline-flex;align-items:center;gap:8px;background:#ab5c5c;color:#FFF9F7;text-decoration:none;font-family:'Italiana',serif;font-size:12px;letter-spacing:.22em;text-transform:uppercase;padding:12px 22px;border-radius:50px;transition:background .3s}
+.btn-hosp:hover{background:#722f37}
+.btn-hosp svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2}
 .dc-avoid-lbl{font-family:'Italiana',serif;font-size:13px;letter-spacing:.28em;text-transform:uppercase;color:#722f37;text-align:center;display:block;margin:20px 0 14px;font-weight:600}
 .dc-avoid-row{display:flex;justify-content:center;gap:20px;margin-bottom:4px}
 .dc-avoid-sw{display:flex;flex-direction:column;align-items:center;gap:6px}
@@ -282,7 +303,7 @@ body{background:linear-gradient(175deg,#fbeee9 0%,#f6e2db 30%,#fdf4f0 50%,#f3dcd
 
 /* ══════════════════ VEGAS GLAMOUR (elegante, sutil) ══════════════════ */
 /* Shimmer dorado — solo sobre fondos oscuros (regalos, footer, hero) */
-.vg-shimmer{background:linear-gradient(100deg,var(--champagne) 28%,var(--champagne-hi) 47%,#fffef8 50%,var(--champagne-hi) 53%,var(--champagne) 72%);background-size:230% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;animation:vgShimmer 7s linear infinite}
+.vg-shimmer{background:linear-gradient(100deg,var(--champagne) 28%,var(--champagne-hi) 47%,#fffef8 50%,var(--champagne-hi) 53%,var(--champagne) 72%);background-size:230% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;animation:vgShimmer 7s linear infinite;line-height:1.5;padding:.12em .12em .16em;display:inline-block}
 @keyframes vgShimmer{to{background-position:-230% center}}
 /* Glow dorado suave detrás de texto claro */
 .vg-glow{text-shadow:0 1px 10px rgba(0,0,0,.5),0 0 22px var(--gold-glow),0 0 40px rgba(201,162,39,.16)}
@@ -494,23 +515,11 @@ body{background:linear-gradient(175deg,#fbeee9 0%,#f6e2db 30%,#fdf4f0 50%,#f3dcd
     <p class="dc-text" style="margin-top:22px">Ven cómodo y con estilo:<br>un código casual y formal<br>para disfrutar nuestra gran noche en Las Vegas.</p>
     <div class="dc-cols rv">
       <div class="dc-col">
-        <svg viewBox="0 0 64 80" width="64" height="80" fill="none">
-          <circle cx="32" cy="12" r="9" stroke="#bf9280" stroke-width="1.5"/>
-          <path d="M22 21L32 27L42 21" stroke="#bf9280" stroke-width="1.3" stroke-linecap="round"/>
-          <path d="M32 27L30 38L32 43L34 38Z" fill="rgba(191,146,128,.22)" stroke="#ab5c5c" stroke-width="1.1"/>
-          <path d="M22 21L14 36L16 58L32 54" stroke="#3A2525" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M42 21L50 36L48 58L32 54" stroke="#3A2525" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M16 58L18 78M48 58L46 78" stroke="#3A2525" stroke-width="1.5" stroke-linecap="round"/>
-        </svg>
+        <img src="dress-caballero.png" alt="Vestimenta casual para caballeros" class="dc-fig" loading="lazy">
         <div class="dc-col-ttl">Caballeros</div>
       </div>
       <div class="dc-col">
-        <svg viewBox="0 0 64 80" width="64" height="80" fill="none">
-          <circle cx="32" cy="11" r="9" stroke="#bf9280" stroke-width="1.5"/>
-          <path d="M23 8 Q26 2 32 3 Q38 2 41 8" stroke="#bf9280" stroke-width="1.3" fill="rgba(191,146,128,.12)" stroke-linecap="round"/>
-          <path d="M23 22Q20 28 20 34L16 58L48 58L44 34Q44 28 41 22Z" fill="rgba(191,146,128,.1)" stroke="#ab5c5c" stroke-width="1.3" stroke-linejoin="round"/>
-          <path d="M16 58Q12 72 32 76Q52 72 48 58Z" fill="rgba(191,146,128,.15)" stroke="#ab5c5c" stroke-width="1.3"/>
-        </svg>
+        <img src="dress-dama.png" alt="Vestimenta casual para damas" class="dc-fig" loading="lazy">
         <div class="dc-col-ttl">Damas</div>
       </div>
     </div>
@@ -525,6 +534,62 @@ body{background:linear-gradient(175deg,#fbeee9 0%,#f6e2db 30%,#fdf4f0 50%,#f3dcd
     <div class="no-kids rv">
       <svg viewBox="0 0 24 24"><circle cx="12" cy="7" r="4"/><path d="M5.5 21v-2a4.5 4.5 0 0 1 9 0v2"/><line x1="17" y1="11" x2="23" y2="11"/></svg>
       <span>Celebración <strong>solo para adultos</strong>. Con cariño les pedimos no traer niños al evento. ¡Los esperamos libres y disfrutando!</span>
+    </div>
+  </section>
+
+  <!-- HOSPEDAJE -->
+  <section class="sec rv vg-grad-warm" style="text-align:center;overflow:hidden">
+    <div class="vg-lattice"></div>
+    <span class="eyebrow">Para tu estancia</span>
+    <h2 class="heading-sm" style="color:#722f37">Sugerencia de Hospedaje</h2>
+    <div class="orn" style="margin-top:16px"><div class="orn-line"></div><div class="orn-diamond-sm"></div><div class="orn-diamond"></div><div class="orn-diamond-sm"></div><div class="orn-line"></div></div>
+    <p class="dc-text" style="margin-top:20px;font-size:16px">Si vienes de fuera, te recomendamos<br>estos hoteles icónicos del Strip.</p>
+
+    <div class="hosp-carousel">
+      <button class="hosp-arrow prev" aria-label="Anterior"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
+      <button class="hosp-arrow next" aria-label="Siguiente"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button>
+      <div class="hosp-viewport">
+        <div class="hosp-track" id="hospTrack">
+          <div class="hosp-slide">
+            <div class="hosp-photo"><img src="hotel-paris.jpg" alt="Paris Las Vegas" loading="lazy"></div>
+            <div class="hosp-name">Paris Las Vegas</div>
+            <div class="hosp-city">3655 S Las Vegas Blvd</div>
+            <div class="hosp-btns">
+              <a class="btn-hosp" href="https://maps.app.goo.gl/KvEkfTyAUxRFTHQBA" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Cómo llegar
+              </a>
+            </div>
+          </div>
+          <div class="hosp-slide">
+            <div class="hosp-photo"><img src="hotel-nyny.jpg" alt="New York-New York Hotel & Casino" loading="lazy"></div>
+            <div class="hosp-name">New York-New York</div>
+            <div class="hosp-city">3790 S Las Vegas Blvd</div>
+            <div class="hosp-btns">
+              <a class="btn-hosp" href="https://maps.app.goo.gl/9Ejvfmizzpkqqdmp8" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Cómo llegar
+              </a>
+            </div>
+          </div>
+          <div class="hosp-slide">
+            <div class="hosp-photo"><img src="hotel-caesars.jpg" alt="Caesars Palace" loading="lazy"></div>
+            <div class="hosp-name">Caesars Palace</div>
+            <div class="hosp-city">3570 S Las Vegas Blvd</div>
+            <div class="hosp-btns">
+              <a class="btn-hosp" href="https://maps.app.goo.gl/6GP3BwWK7FnMZuqU6" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Cómo llegar
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hosp-dots" id="hospDots">
+        <button class="active" aria-label="Paris Las Vegas"></button>
+        <button aria-label="New York-New York"></button>
+        <button aria-label="Caesars Palace"></button>
+      </div>
     </div>
   </section>
 
@@ -552,72 +617,6 @@ body{background:linear-gradient(175deg,#fbeee9 0%,#f6e2db 30%,#fdf4f0 50%,#f3dcd
     <div class="orn" style="margin-top:16px"><div class="orn-line" style="background:linear-gradient(to right,transparent,rgba(191,146,128,.4),transparent)"></div><div class="orn-diamond-sm" style="background:var(--gold)"></div><div class="orn-diamond" style="background:var(--gold)"></div><div class="orn-diamond-sm" style="background:var(--gold)"></div><div class="orn-line" style="background:linear-gradient(to right,transparent,rgba(191,146,128,.4),transparent)"></div></div>
     <p class="gift-msg rv" style="font-size:21px;margin-top:8px">Nuestro mejor regalo<br>es que nos acompañen este día.</p>
     <p class="gift-msg rv" style="margin-bottom:0">No necesitamos nada más<br>que verlos celebrar con nosotros.</p>
-  </section>
-
-  <!-- RSVP -->
-  <section id="rsvp-section" class="rv">
-    <div class="rsvp-card">
-      <svg class="rsvp-corner rsvp-corner--tl" viewBox="0 0 52 52" fill="none" aria-hidden="true"><path d="M2 50 L2 2 L50 2" stroke="var(--gold)" stroke-width=".9" opacity=".6"/><circle cx="2" cy="2" r="2.5" fill="var(--gold)" opacity=".5"/></svg>
-      <svg class="rsvp-corner rsvp-corner--tr" viewBox="0 0 52 52" fill="none" aria-hidden="true"><path d="M2 50 L2 2 L50 2" stroke="var(--gold)" stroke-width=".9" opacity=".6"/><circle cx="2" cy="2" r="2.5" fill="var(--gold)" opacity=".5"/></svg>
-      <svg class="rsvp-corner rsvp-corner--bl" viewBox="0 0 52 52" fill="none" aria-hidden="true"><path d="M2 50 L2 2 L50 2" stroke="var(--gold)" stroke-width=".9" opacity=".6"/><circle cx="2" cy="2" r="2.5" fill="var(--gold)" opacity=".5"/></svg>
-      <svg class="rsvp-corner rsvp-corner--br" viewBox="0 0 52 52" fill="none" aria-hidden="true"><path d="M2 50 L2 2 L50 2" stroke="var(--gold)" stroke-width=".9" opacity=".6"/><circle cx="2" cy="2" r="2.5" fill="var(--gold)" opacity=".5"/></svg>
-
-      <div class="rsvp-inner" id="rsvpCard">
-        <svg class="rsvp-ornament" viewBox="0 0 320 56" fill="none" aria-hidden="true">
-          <g stroke="var(--gold)" stroke-width=".9" opacity=".8" fill="none">
-            <path d="M18 28 Q50 10 82 28 Q106 42 130 28"/>
-            <path d="M190 28 Q214 42 238 28 Q270 10 302 28"/>
-            <circle cx="160" cy="28" r="5.5"/>
-            <circle cx="160" cy="28" r="2" fill="var(--gold)" stroke="none"/>
-            <path d="M148 28 L154 28" opacity=".5"/>
-            <path d="M166 28 L172 28" opacity=".5"/>
-            <path d="M154 20 Q160 13 166 20" opacity=".55"/>
-            <path d="M154 36 Q160 43 166 36" opacity=".55"/>
-          </g>
-        </svg>
-
-        <span class="eyebrow">Confirmación</span>
-        <h2 class="rsvp-title">¿Nos <em>acompañas</em>?</h2>
-        <p class="rsvp-text">Confirma tu asistencia para que podamos preparar todo con amor para este día tan especial.</p>
-
-        <div class="rsvp-divider">
-          <svg class="rsvp-divider-heart" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z"/></svg>
-        </div>
-
-        <p id="rsvpPasesNote"></p>
-
-        <div class="rsvp-pases-display" id="rsvp-pases-display">
-          <div class="rsvp-pases-label">Pases reservados</div>
-          <div class="rsvp-pases-num" id="rsvp-pases-num">1</div>
-        </div>
-
-        <div class="rsvp-asignados" id="rsvp-asignados" style="display:none"></div>
-
-        <div class="rsvp-toggle" id="rsvp-toggle-std">
-          <button class="rsvp-toggle-btn" id="btnYes" type="button" onclick="selectRsvp('yes')">¡Con mucho gusto!</button>
-          <button class="rsvp-toggle-btn" id="btnNo" type="button" onclick="selectRsvp('no')">No podré asistir</button>
-        </div>
-
-        <div class="rsvp-fields" id="namesContainer"></div>
-
-        <button class="rsvp-btn" id="btnEnviar" type="button" onclick="sendRsvp()">
-          <span id="rsvp-btn-text">Confirmar asistencia</span>
-        </button>
-
-        <p id="rsvp-feedback"></p>
-
-        <div class="rsvp-deadline">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm.5 5v5.25l4.5 2.67-.75 1.23L11 13V7h1.5z"/></svg>
-          Confirma antes del 15 de Agosto · 2026
-        </div>
-      </div>
-    </div>
-
-    <div class="rsvp-ok" id="rsvpOk">
-      <span class="rsvp-ok-icon">✨</span>
-      <span class="rsvp-ok-title">¡Gracias!</span>
-      <p class="rsvp-ok-msg" id="rsvpOkMsg">Tu confirmación ha sido registrada.<br>¡Nos vemos en Las Vegas!</p>
-    </div>
   </section>
 
   <!-- FOOTER -->
@@ -777,6 +776,33 @@ function initWheel(){
   ring.addEventListener('touchstart',function(){auto=false;});
 }
 
+/* ── HOSPEDAJE · carrusel ── */
+function initHosp(){
+  var track=document.getElementById('hospTrack');
+  if(!track)return;
+  var slides=track.querySelectorAll('.hosp-slide');
+  var dots=document.querySelectorAll('#hospDots button');
+  var prev=document.querySelector('.hosp-arrow.prev');
+  var next=document.querySelector('.hosp-arrow.next');
+  var idx=0,n=slides.length;
+  if(!n)return;
+  function go(i){
+    idx=((i%n)+n)%n;
+    track.style.transform='translateX(-'+(idx*100)+'%)';
+    dots.forEach(function(d,j){d.classList.toggle('active',j===idx);});
+  }
+  if(prev)prev.addEventListener('click',function(){go(idx-1);});
+  if(next)next.addEventListener('click',function(){go(idx+1);});
+  dots.forEach(function(d,j){d.addEventListener('click',function(){go(j);});});
+  var sx=0,dx=0,dragging=false;
+  track.addEventListener('touchstart',function(e){sx=e.touches[0].clientX;dx=0;dragging=true;},{passive:true});
+  track.addEventListener('touchmove',function(e){if(!dragging)return;dx=e.touches[0].clientX-sx;},{passive:true});
+  track.addEventListener('touchend',function(){
+    if(!dragging)return;dragging=false;
+    if(Math.abs(dx)>40){go(dx<0?idx+1:idx-1);}
+  });
+}
+
 /* ── HERO · entrada tipo letrero de neón ── */
 function heroNeonEntrance(){
   var bride=document.querySelector('.hero-bride');
@@ -871,236 +897,8 @@ function initMain(){
   /* Gallery — 3D Wheel */
   initWheel();
 
-  /* RSVP · PANEL INTEGRATION (patrón estándar) */
-  const PANEL_API = 'https://panel-invitados.vercel.app/api/confirmar';
-  const RSVP_URL  = 'https://boda-daniela-y-ladislao.vercel.app';
-  const DEADLINE  = new Date(2026, 7, 15, 23, 59, 59, 999);
-  const frozen    = Date.now() > DEADLINE.getTime();
-  const urlParams = new URLSearchParams(window.location.search);
-  const urlPara   = (urlParams.get('para') || '').trim();
-  const rawP      = parseInt(urlParams.get('pases')) || 1;
-  let   urlPases  = (isNaN(rawP) || rawP < 1 || rawP > 20) ? 1 : rawP;
-
-  let savedNames = [];
-  let nombresAsignados = [];
-  const asignadosChoices = {};
-
-  const note = document.getElementById('rsvpPasesNote');
-  const pasesNumEl = document.getElementById('rsvp-pases-num');
-  const toggleEl = document.getElementById('rsvp-toggle-std');
-  const asigEl = document.getElementById('rsvp-asignados');
-  const fieldsWrap = document.getElementById('namesContainer');
-
-  function renderAsignados(){
-    if(!asigEl) return;
-    asigEl.innerHTML = '';
-    nombresAsignados.forEach(function(nm, idx){
-      const card = document.createElement('div');
-      card.className = 'rsvp-person-card';
-      const choice = asignadosChoices[idx];
-      if(choice) card.setAttribute('data-choice', choice);
-      const name = document.createElement('div');
-      name.className = 'rsvp-person-name';
-      name.textContent = nm;
-      const tog = document.createElement('div');
-      tog.className = 'rsvp-person-toggle';
-      const bY = document.createElement('button');
-      bY.type = 'button';
-      bY.className = 'rsvp-mini-btn' + (choice === 'yes' ? ' rsvp-mini-yes-on' : '');
-      bY.textContent = 'Asistiré';
-      bY.disabled = frozen;
-      bY.addEventListener('click', function(){ if(frozen) return; asignadosChoices[idx] = 'yes'; renderAsignados(); });
-      const bN = document.createElement('button');
-      bN.type = 'button';
-      bN.className = 'rsvp-mini-btn' + (choice === 'no' ? ' rsvp-mini-no-on' : '');
-      bN.textContent = 'No asistiré';
-      bN.disabled = frozen;
-      bN.addEventListener('click', function(){ if(frozen) return; asignadosChoices[idx] = 'no'; renderAsignados(); });
-      tog.appendChild(bY);
-      tog.appendChild(bN);
-      card.appendChild(name);
-      card.appendChild(tog);
-      asigEl.appendChild(card);
-    });
-  }
-  function paintNote(){
-    if(pasesNumEl) pasesNumEl.textContent = urlPases;
-    if(!note) return;
-    if(urlPara){
-      note.textContent='✦ '+urlPara+', tienes '+(urlPases===1?'1 pase reservado':urlPases+' pases reservados')+' ✦';
-    } else {
-      note.textContent='✦ '+(urlPases===1?'1 pase reservado para ti':urlPases+' pases reservados para ti')+' ✦';
-    }
-  }
-  paintNote();
-
-  function renderNameFields(count){
-    const c=document.getElementById('namesContainer');
-    c.innerHTML='';
-    for(let i=1;i<=count;i++){
-      const inp=document.createElement('input');
-      inp.type='text';
-      inp.className='rsvp-input rsvp-name-input';
-      inp.placeholder = count === 1 ? 'Tu nombre completo' : 'Invitado ' + i;
-      inp.autocomplete='off';
-      inp.maxLength=60;
-      const idx=i-1;
-      if(savedNames[idx]){
-        inp.value=savedNames[idx];
-      }
-      inp.addEventListener('input', function(){ savedNames[idx] = this.value; });
-      c.appendChild(inp);
-    }
-  }
-  renderNameFields(urlPases);
-
-  window.rsvpChoice='';
-  const btnYes = document.getElementById('btnYes');
-  const btnNo  = document.getElementById('btnNo');
-  const btnEnv = document.getElementById('btnEnviar');
-
-  if(urlPara){
-    btnYes.disabled = true;
-    btnNo.disabled  = true;
-  }
-
-  window.selectRsvp=function(choice){
-    window.rsvpChoice=choice;
-    btnYes.className='rsvp-toggle-btn'+(choice==='yes'?' selected-yes':'');
-    btnNo.className ='rsvp-toggle-btn'+(choice==='no'?' selected-no':'');
-  };
-
-  if(urlPara){
-    fetch(PANEL_API + '?nombre=' + encodeURIComponent(urlPara) + '&url_boda=' + encodeURIComponent(RSVP_URL))
-      .then(r => r.json())
-      .then(resp => {
-        const d = resp.invitado;
-        if(d && typeof d.pases === 'number' && d.pases > 0 && d.pases <= 20){
-          urlPases = d.pases;
-          paintNote();
-        }
-
-        const tieneAsignados = d && Array.isArray(d.nombres_asignados) && d.nombres_asignados.length > 0;
-        if(tieneAsignados){
-          nombresAsignados = d.nombres_asignados.slice();
-          if(toggleEl) toggleEl.style.display = 'none';
-          if(fieldsWrap){ fieldsWrap.style.display = 'none'; fieldsWrap.innerHTML = ''; }
-          if(asigEl) asigEl.style.display = 'flex';
-          const confirmadosLower = (d.nombres_confirmados || []).map(function(s){ return String(s).toLowerCase().trim(); });
-          if(d.estado === 'confirmado' || d.estado === 'declino'){
-            nombresAsignados.forEach(function(nm, idx){
-              if(d.estado === 'declino'){
-                asignadosChoices[idx] = 'no';
-              } else {
-                asignadosChoices[idx] = confirmadosLower.indexOf(nm.toLowerCase().trim()) >= 0 ? 'yes' : 'no';
-              }
-            });
-            document.getElementById('rsvp-btn-text').textContent='Actualizar respuesta';
-            const feedEl = document.getElementById('rsvp-feedback');
-            if(feedEl){
-              feedEl.style.display='block';
-              feedEl.style.color='var(--gold)';
-              feedEl.textContent = d.estado === 'confirmado'
-                ? '¡Ya tienes registrada tu respuesta! Puedes actualizarla.'
-                : 'Ya tienes registrado que no podrán asistir. Puedes cambiar la respuesta.';
-            }
-          }
-          renderAsignados();
-          return;
-        }
-
-        btnYes.disabled = false;
-        btnNo.disabled  = false;
-        if(d && (d.estado === 'confirmado' || d.estado === 'declino')){
-          if(d.nombres_confirmados && d.nombres_confirmados.length){
-            savedNames = d.nombres_confirmados.slice();
-          }
-          renderNameFields(urlPases);
-          window.selectRsvp(d.estado === 'confirmado' ? 'yes' : 'no');
-          document.getElementById('rsvp-btn-text').textContent='Actualizar respuesta';
-        }
-      })
-      .catch(() => {
-        btnYes.disabled = false;
-        btnNo.disabled  = false;
-      });
-  }
-
-  if(frozen){
-    btnYes.disabled = true;
-    btnNo.disabled  = true;
-    btnEnv.disabled = true;
-    document.getElementById('rsvp-btn-text').textContent='Fecha límite alcanzada';
-  }
-
-  window.sendRsvp=function(){
-    if(frozen) return;
-    const modoAsignados = nombresAsignados.length > 0;
-    let names = [];
-    let estadoFinal;
-    const feedEl=document.getElementById('rsvp-feedback');
-
-    if(modoAsignados){
-      const faltantes = nombresAsignados.filter(function(_, i){ return !asignadosChoices[i]; });
-      if(faltantes.length > 0){
-        if(feedEl){
-          feedEl.style.display='block';
-          feedEl.style.color='#9a4a3a';
-          feedEl.textContent = 'Por favor responde por cada invitado (' + faltantes.length + ' pendiente' + (faltantes.length === 1 ? '' : 's') + ').';
-        }
-        return;
-      }
-      names = nombresAsignados.filter(function(_, i){ return asignadosChoices[i] === 'yes'; });
-      estadoFinal = names.length > 0 ? 'confirmado' : 'declino';
-    } else {
-      if(!window.rsvpChoice){ btnYes.focus(); return; }
-      const inputs=document.querySelectorAll('.rsvp-name-input');
-      names=Array.from(inputs).map(i=>i.value.trim()).filter(n=>n);
-      if(window.rsvpChoice==='yes' && names.length===0){
-        inputs[0]?.focus();
-        return;
-      }
-      estadoFinal = window.rsvpChoice==='yes' ? 'confirmado' : 'declino';
-    }
-
-    btnEnv.disabled=true;
-    document.getElementById('rsvp-btn-text').textContent='Enviando…';
-
-    fetch(PANEL_API,{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({
-        nombre: urlPara || (names[0] || 'Invitado'),
-        url_boda: RSVP_URL,
-        estado: estadoFinal,
-        pases_confirmados: estadoFinal === 'confirmado' ? names.length : 0,
-        nombres_confirmados: estadoFinal === 'confirmado' ? names : []
-      })
-    }).then(r=>{
-      if(!r.ok) throw new Error('Error');
-      btnEnv.disabled=false;
-      document.getElementById('rsvp-btn-text').textContent='Actualizar respuesta';
-      if(feedEl){
-        feedEl.style.display='block';
-        feedEl.style.color = estadoFinal === 'confirmado' ? '#2F5A28' : 'var(--gold)';
-        if(estadoFinal === 'confirmado'){
-          feedEl.textContent = names.length === 1
-            ? '¡Confirmado para ' + names[0] + '! Nos vemos pronto. ✦'
-            : '¡Confirmado para ' + names.length + ' invitados! Nos vemos pronto. ✦';
-        } else {
-          feedEl.textContent = 'Hemos registrado que no podrán asistir. ¡Gracias por avisarnos!';
-        }
-      }
-    }).catch(()=>{
-      btnEnv.disabled=false;
-      document.getElementById('rsvp-btn-text').textContent='Confirmar asistencia';
-      if(feedEl){
-        feedEl.style.display='block';
-        feedEl.style.color='#9a4a3a';
-        feedEl.textContent='Error de conexión. Intenta de nuevo.';
-      }
-    });
-  };
+  /* Hospedaje carrusel */
+  initHosp();
 
   /* Copy */
   window.copyText=function(text){
