@@ -9,7 +9,9 @@
 <meta property="og:url" content="https://boda-daniela-y-ladislao.vercel.app/">
 <meta property="og:title" content="Daniela y Ladislao · XXII · VIII · MMXXVI">
 <meta property="og:description" content="Nos casamos en Las Vegas y queremos que estés ahí. Las Vegas, Nevada — 22 Agosto 2026">
-<meta property="og:image" content="https://boda-daniela-y-ladislao.vercel.app/sobre.png">
+<meta property="og:image" content="https://boda-daniela-y-ladislao.vercel.app/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta property="og:locale" content="es_MX">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="format-detection" content="telephone=no">
@@ -194,6 +196,13 @@ body{background:linear-gradient(175deg,#fbeee9 0%,#f6e2db 30%,#fdf4f0 50%,#f3dcd
 .dc-avoid-name{font-family:'Cormorant Garamond',serif;font-size:13px;color:var(--text);opacity:.7;text-align:center;max-width:60px;line-height:1.4}
 .no-kids{display:flex;align-items:flex-start;gap:14px;border:1px solid var(--border);border-radius:4px;padding:18px 18px;margin-top:22px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;color:var(--dark);line-height:1.7;background:rgba(191,146,128,.04)}
 .no-kids svg{width:18px;height:18px;flex-shrink:0;margin-top:3px;stroke:var(--gold);stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round}
+/* ── CARD "solo adultos" · fiesta ── */
+.adults-card{position:relative;overflow:hidden;margin:26px auto 0;max-width:360px;padding:30px 26px 28px;text-align:center;border-radius:8px;border:1px solid rgba(201,162,39,.5);background:radial-gradient(120% 85% at 50% 0,rgba(122,47,55,.15),transparent 62%),linear-gradient(160deg,#fffdf7,#fbf0e4);box-shadow:0 12px 34px rgba(92,31,40,.14),0 0 22px rgba(201,162,39,.18)}
+.adults-icon{display:inline-flex;width:54px;height:54px;align-items:center;justify-content:center;border-radius:50%;background:radial-gradient(circle at 40% 34%,#fff6de,#e0bd57 55%,#b9962f 100%);color:#5c1f28;margin-bottom:12px;box-shadow:0 4px 14px rgba(201,162,39,.45),inset 0 1px 2px rgba(255,255,255,.6)}
+.adults-icon svg{width:27px;height:27px}
+.adults-ttl{font-family:'Great Vibes',cursive;font-size:32px;color:#722f37;line-height:1.15;margin-bottom:10px}
+.adults-msg{font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--text);line-height:1.75;opacity:.86;max-width:310px;margin:0 auto}
+.adults-msg strong{font-style:normal;font-weight:700;color:#b9962f}
 
 /* ── REGALOS ── */
 #regalos{background:#722f37}
@@ -327,9 +336,9 @@ body{background:linear-gradient(175deg,#fbeee9 0%,#f6e2db 30%,#fdf4f0 50%,#f3dcd
 /* Hairline dorado luminoso */
 .vg-line{height:1px;background:linear-gradient(90deg,transparent,var(--champagne),transparent);box-shadow:0 0 7px var(--gold-glow)}
 /* ── DISCO BALL (botón de música) ── */
-.music-fab.disco{background:radial-gradient(circle at 34% 26%,#fffdf3 0%,#f2d888 15%,var(--champagne) 48%,#7f611a 100%);box-shadow:0 5px 22px rgba(201,162,39,.55),inset 0 0 0 1px rgba(255,244,214,.45)}
+.music-fab.disco{background:#7a5f18;box-shadow:0 5px 22px rgba(201,162,39,.6),0 0 16px rgba(201,162,39,.3)}
 .music-fab.disco::after{background:var(--champagne)}
-.disco-facets{position:absolute;inset:0;border-radius:50%;pointer-events:none;background-image:repeating-linear-gradient(0deg,rgba(70,48,8,.30) 0 1px,transparent 1px 8px),repeating-linear-gradient(90deg,rgba(70,48,8,.30) 0 1px,transparent 1px 8px);opacity:.55}
+.disco-ball-img{position:absolute;inset:0;width:100%;height:100%;border-radius:50%;pointer-events:none;z-index:1}
 .disco-shine{position:absolute;inset:0;border-radius:50%;pointer-events:none;overflow:hidden;background:conic-gradient(from 0deg,transparent 0 14%,rgba(255,255,255,.6) 22%,transparent 30% 58%,rgba(255,255,255,.45) 66%,transparent 74%);mix-blend-mode:screen;opacity:.6;animation:discoSpin 6s linear infinite}
 @keyframes discoSpin{to{transform:rotate(360deg)}}
 .music-fab.disco svg{position:relative;z-index:2;filter:drop-shadow(0 1px 2px rgba(90,60,10,.6))}
@@ -395,12 +404,9 @@ body{background:linear-gradient(175deg,#fbeee9 0%,#f6e2db 30%,#fdf4f0 50%,#f3dcd
       <div class="hero-corner hc-br"><svg viewBox="0 0 24 24" fill="none"><path d="M1 1L1 11M1 1L11 1" stroke="#bf9280" stroke-width="1.4" opacity=".7"/></svg></div>
     </div>
     <div class="hero-content">
-      <div class="hero-seal rv"><img src="monograma.png" alt="D&L" /></div>
-      <span class="hero-tag rv">Las Vegas, Nevada · 2026</span>
       <span class="hero-bride rv vg-glow"><span style="font-family:'Dancing Script',cursive;font-weight:700">D</span>aniela</span>
       <span class="hero-amp rv vg-glow-soft">&amp;</span>
       <span class="hero-groom rv vg-glow">Ladislao</span>
-      <span class="hero-date rv vg-glow-soft">Sábado · 22 de Agosto</span>
     </div>
     <div class="scroll-hint" id="scrollHint">
       <span class="scroll-hint-txt">Desliza</span>
@@ -542,9 +548,19 @@ body{background:linear-gradient(175deg,#fbeee9 0%,#f6e2db 30%,#fdf4f0 50%,#f3dcd
       </div>
     </div>
     <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px;color:var(--text);opacity:.65;margin-top:14px">Queremos que ella brille — el blanco es solo de la novia.</p>
-    <div class="no-kids rv">
-      <svg viewBox="0 0 24 24"><circle cx="12" cy="7" r="4"/><path d="M5.5 21v-2a4.5 4.5 0 0 1 9 0v2"/><line x1="17" y1="11" x2="23" y2="11"/></svg>
-      <span>Celebración <strong>solo para adultos</strong>. Con cariño les pedimos no traer niños al evento. ¡Los esperamos libres y disfrutando!</span>
+    <div class="adults-card rv">
+      <span class="adults-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M7.5 3h9l-1.1 7.2a3.4 3.4 0 0 1-6.8 0z"/>
+          <line x1="12" y1="14" x2="12" y2="20"/>
+          <line x1="8.5" y1="20.5" x2="15.5" y2="20.5"/>
+          <circle cx="12" cy="5.6" r=".55" fill="currentColor" stroke="none"/>
+          <circle cx="10.3" cy="7.6" r=".5" fill="currentColor" stroke="none"/>
+          <circle cx="13.7" cy="7.6" r=".5" fill="currentColor" stroke="none"/>
+        </svg>
+      </span>
+      <div class="adults-ttl">Una noche para grandes</div>
+      <p class="adults-msg">Esta es <strong>fiesta de adultos</strong>: consigan niñera, pónganse sus mejores galas y vengan listos para brindar, bailar y celebrar con nosotros hasta que las luces de Las Vegas se apaguen.</p>
     </div>
   </section>
 
@@ -642,7 +658,7 @@ body{background:linear-gradient(175deg,#fbeee9 0%,#f6e2db 30%,#fdf4f0 50%,#f3dcd
 </div>
 
 <button class="music-fab disco" id="musicFab" aria-label="Música">
-  <span class="disco-facets"></span>
+  <img class="disco-ball-img" src="disco-ball.svg" alt="" aria-hidden="true">
   <span class="disco-shine"></span>
   <svg class="ic-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
   <svg class="ic-pause" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
@@ -893,7 +909,7 @@ function initMain(){
   }
 
   /* Sheen dorado que barre los marcos cada vez que entran en viewport */
-  var sheenEls=document.querySelectorAll('.card,.fam-card,.dc-col');
+  var sheenEls=document.querySelectorAll('.card,.fam-card,.dc-col,.adults-card');
   sheenEls.forEach(function(el){ el.classList.add('vg-sheen'); });
   if('IntersectionObserver' in window){
     var sheenObs=new IntersectionObserver(function(entries){
