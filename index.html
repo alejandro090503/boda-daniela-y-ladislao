@@ -30,6 +30,12 @@
   --blush:#ffcfcf;
   --border:rgba(191,146,128,.25);
   --border-light:rgba(191,146,128,.12);
+  /* ── Vegas glamour · dorado champagne resplandeciente (uso en acentos, no en cuerpo) ── */
+  --champagne:#c9a227;
+  --champagne-lt:#e6c56e;
+  --champagne-hi:#fff4d6;
+  --gold-glow:rgba(201,162,39,.42);
+  --vegas-deep:#5c1f28;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{overflow-x:hidden;max-width:100vw}
@@ -195,7 +201,7 @@ body{background:var(--bg);color:var(--text);font-family:'Cormorant Garamond',ser
 .wheel-scene{position:relative;width:100%;height:520px;margin:40px auto 0;perspective:1400px;transform-style:preserve-3d;overflow:visible}
 .wheel-ring{position:absolute;width:100%;height:100%;transform-style:preserve-3d;cursor:grab}
 .wheel-ring.dragging{cursor:grabbing}
-.wheel-card{position:absolute;width:200px;height:280px;left:50%;top:50%;margin-left:-100px;margin-top:-140px;border-radius:18px;overflow:hidden;border:2px solid rgba(191,146,128,.30);box-shadow:0 12px 40px rgba(171,92,92,.22);user-select:none;-webkit-user-select:none}
+.wheel-card{position:absolute;width:200px;height:280px;left:50%;top:50%;margin-left:-100px;margin-top:-140px;border-radius:18px;overflow:hidden;border:2px solid rgba(201,162,39,.55);box-shadow:0 12px 40px rgba(92,31,40,.28),0 0 20px rgba(201,162,39,.28);user-select:none;-webkit-user-select:none}
 .wheel-card img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;pointer-events:none}
 .gal-hint{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;font-weight:500;letter-spacing:3px;color:var(--accent);margin-top:24px;opacity:.8}
 
@@ -274,6 +280,36 @@ body{background:var(--bg);color:var(--text);font-family:'Cormorant Garamond',ser
 
 .sec-bg{position:absolute;inset:0;background-size:cover;background-position:center;background-repeat:no-repeat;pointer-events:none;z-index:-1}
 
+/* ══════════════════ VEGAS GLAMOUR (elegante, sutil) ══════════════════ */
+/* Shimmer dorado — solo sobre fondos oscuros (regalos, footer, hero) */
+.vg-shimmer{background:linear-gradient(100deg,var(--champagne) 28%,var(--champagne-hi) 47%,#fffef8 50%,var(--champagne-hi) 53%,var(--champagne) 72%);background-size:230% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;animation:vgShimmer 7s linear infinite}
+@keyframes vgShimmer{to{background-position:-230% center}}
+/* Glow dorado suave detrás de texto claro */
+.vg-glow{text-shadow:0 1px 10px rgba(0,0,0,.5),0 0 22px var(--gold-glow),0 0 40px rgba(201,162,39,.16)}
+.vg-glow-soft{text-shadow:0 0 16px var(--gold-glow)}
+/* Fondo Art Déco: rayos sunburst dorados muy tenues (reemplaza flores) */
+.vg-rays{position:absolute;inset:0;pointer-events:none;z-index:-1;overflow:hidden;background:repeating-conic-gradient(from 0deg at 50% -6%,rgba(201,162,39,.055) 0deg 1.3deg,transparent 1.3deg 7deg);-webkit-mask-image:linear-gradient(to bottom,#000 0,transparent 74%);mask-image:linear-gradient(to bottom,#000 0,transparent 74%)}
+.vg-rays.up{transform:rotate(180deg)}
+/* Fondo Art Déco: retícula de rombos finos */
+.vg-lattice{position:absolute;inset:0;pointer-events:none;z-index:-1;opacity:.45;background-image:repeating-linear-gradient(45deg,rgba(201,162,39,.08) 0 1px,transparent 1px 26px),repeating-linear-gradient(-45deg,rgba(201,162,39,.08) 0 1px,transparent 1px 26px);-webkit-mask-image:radial-gradient(ellipse at center,#000,transparent 78%);mask-image:radial-gradient(ellipse at center,#000,transparent 78%)}
+/* Hairline dorado luminoso */
+.vg-line{height:1px;background:linear-gradient(90deg,transparent,var(--champagne),transparent);box-shadow:0 0 7px var(--gold-glow)}
+/* ── DISCO BALL (botón de música) ── */
+.music-fab.disco{background:radial-gradient(circle at 34% 26%,#fffdf3 0%,#f2d888 15%,var(--champagne) 48%,#7f611a 100%);box-shadow:0 5px 22px rgba(201,162,39,.55),inset 0 0 0 1px rgba(255,244,214,.45)}
+.music-fab.disco::after{background:var(--champagne)}
+.disco-facets{position:absolute;inset:0;border-radius:50%;pointer-events:none;background-image:repeating-linear-gradient(0deg,rgba(70,48,8,.30) 0 1px,transparent 1px 8px),repeating-linear-gradient(90deg,rgba(70,48,8,.30) 0 1px,transparent 1px 8px);opacity:.55}
+.disco-shine{position:absolute;inset:0;border-radius:50%;pointer-events:none;overflow:hidden;background:conic-gradient(from 0deg,transparent 0 14%,rgba(255,255,255,.6) 22%,transparent 30% 58%,rgba(255,255,255,.45) 66%,transparent 74%);mix-blend-mode:screen;opacity:.6;animation:discoSpin 6s linear infinite}
+@keyframes discoSpin{to{transform:rotate(360deg)}}
+.music-fab.disco svg{position:relative;z-index:2;filter:drop-shadow(0 1px 2px rgba(90,60,10,.6))}
+/* ── MARQUESINA de bombillas (marco galería) — art déco de teatro, discreto ── */
+.marquee{position:relative}
+.marquee::before,.marquee::after{content:'';position:absolute;left:6%;right:6%;height:7px;background-image:radial-gradient(circle,var(--champagne-hi) 0 24%,var(--champagne) 32%,transparent 56%);background-size:20px 7px;background-repeat:repeat-x;filter:drop-shadow(0 0 4px var(--gold-glow));animation:marqueeGlow 2.4s ease-in-out infinite}
+.marquee::before{top:0}
+.marquee::after{bottom:0;animation-delay:1.2s}
+@keyframes marqueeGlow{0%,100%{opacity:.9}50%{opacity:.45}}
+/* Sparkles / champagne (partículas) */
+.vg-spark{position:absolute;top:-30px;will-change:transform,opacity;pointer-events:none}
+.vg-bubble{position:absolute;bottom:-24px;border-radius:50%;pointer-events:none;will-change:transform,opacity;background:radial-gradient(circle at 35% 30%,rgba(255,248,224,.9),rgba(201,162,39,.25) 60%,transparent 72%);box-shadow:0 0 6px var(--gold-glow)}
 @media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
 </style>
 </head>
@@ -309,10 +345,10 @@ body{background:var(--bg);color:var(--text);font-family:'Cormorant Garamond',ser
     <div class="hero-content">
       <div class="hero-seal rv"><img src="monograma.png" alt="D&L" /></div>
       <span class="hero-tag rv">Las Vegas, Nevada · 2026</span>
-      <span class="hero-bride rv"><span style="font-family:'Dancing Script',cursive;font-weight:700">D</span>aniela</span>
-      <span class="hero-amp rv">&amp;</span>
-      <span class="hero-groom rv">Ladislao</span>
-      <span class="hero-date rv">Sábado · 22 de Agosto</span>
+      <span class="hero-bride rv vg-glow"><span style="font-family:'Dancing Script',cursive;font-weight:700">D</span>aniela</span>
+      <span class="hero-amp rv vg-glow-soft">&amp;</span>
+      <span class="hero-groom rv vg-glow">Ladislao</span>
+      <span class="hero-date rv vg-glow-soft">Sábado · 22 de Agosto</span>
     </div>
     <div class="scroll-hint" id="scrollHint">
       <span class="scroll-hint-txt">Desliza</span>
@@ -322,7 +358,7 @@ body{background:var(--bg);color:var(--text);font-family:'Cormorant Garamond',ser
 
   <!-- INVITACIÓN -->
   <section class="sec rv" style="text-align:center;overflow:hidden">
-    <div class="sec-bg" style="background-image:url('botanica2.png');opacity:.45"></div>
+    <div class="vg-rays"></div>
     <div class="orn"><div class="orn-line"></div><div class="orn-diamond-sm"></div><div class="orn-diamond"></div><div class="orn-diamond-sm"></div><div class="orn-line"></div></div>
     <h1 class="heading" style="color:#722f37"><span style="font-family:'Dancing Script',cursive;font-weight:700">D</span>aniela y Ladislao</h1>
     <div class="orn bot"><div class="orn-line"></div><div class="orn-diamond-sm"></div><div class="orn-diamond"></div><div class="orn-diamond-sm"></div><div class="orn-line"></div></div>
@@ -341,7 +377,7 @@ body{background:var(--bg);color:var(--text);font-family:'Cormorant Garamond',ser
 
   <!-- PADRES -->
   <section class="sec rv" style="text-align:center;overflow:hidden">
-    <div class="sec-bg" style="background-image:url('botanica3.png');opacity:.12"></div>
+    <div class="vg-lattice"></div>
     <span class="eyebrow">Con la bendición de</span>
     <h2 class="heading-sm" style="color:#722f37">Nuestros Padres</h2>
     <div class="orn" style="margin-top:16px"><div class="orn-line"></div><div class="orn-diamond-sm"></div><div class="orn-diamond"></div><div class="orn-diamond-sm"></div><div class="orn-line"></div></div>
@@ -419,7 +455,7 @@ body{background:var(--bg);color:var(--text);font-family:'Cormorant Garamond',ser
 
   <!-- ITINERARIO -->
   <section class="sec rv" style="text-align:center;overflow:hidden">
-    <div class="sec-bg" style="background-image:url('botanica1.png');opacity:.14"></div>
+    <div class="vg-rays"></div>
     <span class="eyebrow">Programa del Día</span>
     <h2 class="heading-sm" style="color:#722f37">Itinerario</h2>
     <div class="orn" style="margin-top:16px"><div class="orn-line"></div><div class="orn-diamond-sm"></div><div class="orn-diamond"></div><div class="orn-diamond-sm"></div><div class="orn-line"></div></div>
@@ -473,7 +509,7 @@ body{background:var(--bg);color:var(--text);font-family:'Cormorant Garamond',ser
   </section>
 
   <!-- GALERÍA — RUEDA 3D -->
-  <section id="galeria" aria-label="Galería de fotos">
+  <section id="galeria" class="marquee" aria-label="Galería de fotos">
     <p class="label fu" style="font-family:'Italiana',serif;font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);margin-bottom:10px">Nuestros momentos</p>
     <h2 class="title fu" style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:32px;color:var(--dark);margin-bottom:6px">Momentos <span style="font-family:'Great Vibes',cursive;color:var(--accent);font-size:42px">juntos</span></h2>
     <div class="gal-header-ornament fu"></div>
@@ -492,7 +528,7 @@ body{background:var(--bg);color:var(--text);font-family:'Cormorant Garamond',ser
   <!-- MESA DE REGALOS -->
   <section id="regalos" class="sec rv" style="text-align:center">
     <span class="eyebrow">Nuestro Mejor Regalo</span>
-    <h2 class="heading" style="color:var(--gold-light)">Su Compañía</h2>
+    <h2 class="heading vg-shimmer">Su Compañía</h2>
     <div class="orn" style="margin-top:16px"><div class="orn-line" style="background:linear-gradient(to right,transparent,rgba(191,146,128,.4),transparent)"></div><div class="orn-diamond-sm" style="background:var(--gold)"></div><div class="orn-diamond" style="background:var(--gold)"></div><div class="orn-diamond-sm" style="background:var(--gold)"></div><div class="orn-line" style="background:linear-gradient(to right,transparent,rgba(191,146,128,.4),transparent)"></div></div>
     <p class="gift-msg rv" style="font-size:21px;margin-top:8px">Nuestro mejor regalo<br>es que nos acompañen este día.</p>
     <p class="gift-msg rv" style="margin-bottom:0">No necesitamos nada más<br>que verlos celebrar con nosotros.</p>
@@ -567,15 +603,17 @@ body{background:var(--bg);color:var(--text);font-family:'Cormorant Garamond',ser
   <!-- FOOTER -->
   <footer id="footer">
     <div class="orn" style="margin-bottom:24px"><div class="orn-line" style="background:linear-gradient(to right,transparent,rgba(191,146,128,.3),transparent)"></div><div class="orn-diamond-sm" style="background:var(--gold)"></div><div class="orn-diamond" style="background:var(--gold)"></div><div class="orn-diamond-sm" style="background:var(--gold)"></div><div class="orn-line" style="background:linear-gradient(to right,transparent,rgba(191,146,128,.3),transparent)"></div></div>
-    <div class="footer-names rv"><span style="font-family:'Dancing Script',cursive;font-weight:700">D</span>aniela y Ladislao</div>
-    <div class="footer-date rv">22 · Agosto · 2026</div>
+    <div class="footer-names rv vg-shimmer"><span style="font-family:'Dancing Script',cursive;font-weight:700">D</span>aniela y Ladislao</div>
+    <div class="footer-date rv vg-glow-soft">22 · Agosto · 2026</div>
     <div class="footer-hr"></div>
     <a href="https://www.instagram.com/elysium.invitaciones" target="_blank" rel="noopener" class="footer-credit rv">@elysium.invitaciones</a>
   </footer>
 
 </div>
 
-<button class="music-fab" id="musicFab" aria-label="Música">
+<button class="music-fab disco" id="musicFab" aria-label="Música">
+  <span class="disco-facets"></span>
+  <span class="disco-shine"></span>
   <svg class="ic-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
   <svg class="ic-pause" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
 </button>
@@ -649,30 +687,40 @@ function initEnvelope(){
   });
 })();
 
-/* ── PETALS ── */
-function launchPetals(){
+/* ── GLAM: destellos dorados + burbujas de champagne (elegante, no confeti) ── */
+function launchGlam(){
   const container=document.getElementById('petals');
-  const colors=['#f7a597','#ffcfcf','#bf9280','#ab5c5c'];
-  function spawnWave(){
-    for(let i=0;i<18;i++){
-      setTimeout(()=>{
-        const p=document.createElement('div');
-        p.className='petal';
-        const size=6+Math.random()*8;
-        const color=colors[Math.floor(Math.random()*colors.length)];
-        p.style.cssText=`left:${Math.random()*100}%;width:${size}px;height:${size*1.4}px;background:${color};border-radius:50% 50% 50% 50%/60% 60% 40% 40%;opacity:0;transform:rotate(${Math.random()*360}deg)`;
-        container.appendChild(p);
-        gsap.fromTo(p,
-          {opacity:0,y:-20,x:0,rotation:Math.random()*360},
-          {opacity:.7,y:window.innerHeight+60,x:(Math.random()-.5)*120,rotation:Math.random()*720,
-           duration:6+Math.random()*5,ease:'none',
-           onComplete:()=>p.remove()}
-        );
-      },i*350+Math.random()*500);
-    }
+  if(!container)return;
+  const golds=['#e6c56e','#fff4d6','#c9a227','#f2d888'];
+  const STAR='polygon(50% 0%,58% 42%,100% 50%,58% 58%,50% 100%,42% 58%,0% 50%,42% 42%)';
+  const H=()=>window.innerHeight;
+  function spark(){
+    const s=document.createElement('div');
+    s.className='vg-spark';
+    const size=5+Math.random()*9;
+    const c=golds[Math.floor(Math.random()*golds.length)];
+    s.style.cssText=`left:${Math.random()*100}%;top:${Math.random()*60}%;width:${size}px;height:${size}px;background:${c};clip-path:${STAR};-webkit-clip-path:${STAR};filter:drop-shadow(0 0 5px ${c});opacity:0`;
+    container.appendChild(s);
+    gsap.timeline({onComplete:()=>s.remove()})
+      .to(s,{opacity:.95,scale:1.15,duration:.6,ease:'power1.out'})
+      .to(s,{opacity:0,scale:.3,duration:.9,ease:'power1.in'},'+=0.25');
+    gsap.to(s,{y:80+Math.random()*160,x:(Math.random()-.5)*70,rotation:Math.random()*160,duration:2.2+Math.random()*1.8,ease:'none'});
   }
-  spawnWave();
-  setInterval(spawnWave,8000);
+  function bubble(){
+    const b=document.createElement('div');
+    b.className='vg-bubble';
+    const size=4+Math.random()*9;
+    b.style.cssText=`left:${Math.random()*100}%;width:${size}px;height:${size}px;opacity:0`;
+    container.appendChild(b);
+    gsap.fromTo(b,{opacity:0,y:0,x:0},{opacity:.8,y:-(H()+70),x:(Math.random()-.5)*60,duration:7+Math.random()*5,ease:'none',onComplete:()=>b.remove()});
+    gsap.to(b,{opacity:0,duration:1.6,delay:5+Math.random()*4});
+  }
+  function wave(){
+    for(let i=0;i<7;i++){ setTimeout(spark,i*400+Math.random()*400); }
+    for(let i=0;i<3;i++){ setTimeout(bubble,i*900+Math.random()*600); }
+  }
+  wave();
+  setInterval(wave,3200);
 }
 
 /* ── GALLERY — 3D WHEEL ── */
@@ -712,7 +760,7 @@ function initWheel(){
 /* ── MAIN ── */
 function initMain(){
   window.scrollTo(0,0);
-  launchPetals();
+  launchGlam();
 
   /* Countdown — 24 Oct 2026, 3:00pm CST (UTC-6) */
   const target=new Date('2026-08-22T20:00:00-07:00');
