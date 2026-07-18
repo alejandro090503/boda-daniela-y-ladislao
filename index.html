@@ -310,6 +310,9 @@ body{background:var(--bg);color:var(--text);font-family:'Cormorant Garamond',ser
 /* Sparkles / champagne (partículas) */
 .vg-spark{position:absolute;top:-30px;will-change:transform,opacity;pointer-events:none}
 .vg-bubble{position:absolute;bottom:-24px;border-radius:50%;pointer-events:none;will-change:transform,opacity;background:radial-gradient(circle at 35% 30%,rgba(255,248,224,.9),rgba(201,162,39,.25) 60%,transparent 72%);box-shadow:0 0 6px var(--gold-glow)}
+/* Eyebrow que "se enciende" al entrar en viewport */
+@keyframes vgIgnite{0%{opacity:.45;text-shadow:none}28%{opacity:1;text-shadow:0 0 15px var(--gold-glow)}52%{opacity:.65;text-shadow:0 0 5px var(--gold-glow)}100%{opacity:1;text-shadow:0 0 9px rgba(201,162,39,.28)}}
+.vg-ignite{animation:vgIgnite 1s ease-out both}
 @media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
 </style>
 </head>
@@ -757,6 +760,28 @@ function initWheel(){
   ring.addEventListener('touchstart',function(){auto=false;});
 }
 
+/* ── HERO · entrada tipo letrero de neón ── */
+function heroNeonEntrance(){
+  var bride=document.querySelector('.hero-bride');
+  var groom=document.querySelector('.hero-groom');
+  var amp=document.querySelector('.hero-amp');
+  [bride,groom,amp].forEach(function(el){ if(el) el.style.opacity=0; });
+  function flicker(el,delay){
+    if(!el)return;
+    gsap.timeline({delay:delay})
+      .set(el,{opacity:0})
+      .to(el,{opacity:.5,duration:.05})
+      .to(el,{opacity:0,duration:.06})
+      .to(el,{opacity:.95,duration:.05})
+      .to(el,{opacity:.2,duration:.07})
+      .to(el,{opacity:.9,duration:.05})
+      .to(el,{opacity:1,duration:.3,ease:'power2.out'});
+  }
+  flicker(bride,.25);
+  flicker(amp,.55);
+  flicker(groom,.7);
+}
+
 /* ── MAIN ── */
 function initMain(){
   window.scrollTo(0,0);
@@ -787,11 +812,31 @@ function initMain(){
   let hintHidden=false;
   window.addEventListener('scroll',()=>{if(!hintHidden&&window.scrollY>60){hintHidden=true;hint.classList.add('hidden');}},{passive:true});
 
-  /* Reveal animations */
+  /* Reveal animations (los nombres del hero llevan entrada de neón propia) */
   gsap.utils.toArray('.rv').forEach(el=>{
+    if(el.classList.contains('hero-bride')||el.classList.contains('hero-groom')||el.classList.contains('hero-amp')) return;
     gsap.fromTo(el,{opacity:0,y:28},{opacity:1,y:0,duration:.85,ease:'power2.out',
       scrollTrigger:{trigger:el,start:'top 88%',toggleActions:'play none none none'}});
   });
+
+  /* Hero — entrada tipo letrero de neón (flicker + glow) */
+  heroNeonEntrance();
+
+  /* Parallax sutil en fondos Art Déco (rayos) al hacer scroll */
+  gsap.utils.toArray('.vg-rays').forEach(function(bg){
+    gsap.fromTo(bg,{yPercent:-8},{yPercent:16,ease:'none',
+      scrollTrigger:{trigger:bg.parentElement,start:'top bottom',end:'bottom top',scrub:.6}});
+  });
+
+  /* Eyebrows dorados "se encienden" al entrar en viewport */
+  if('IntersectionObserver' in window){
+    var ebObs=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('vg-ignite'); ebObs.unobserve(en.target); } });
+    },{threshold:.35});
+    document.querySelectorAll('.eyebrow').forEach(function(eb){ ebObs.observe(eb); });
+  } else {
+    document.querySelectorAll('.eyebrow').forEach(function(eb){ eb.classList.add('vg-ignite'); });
+  }
 
   /* Gallery — 3D Wheel */
   initWheel();
