@@ -204,7 +204,7 @@ body{background:linear-gradient(175deg,#fbeee9 0%,#f6e2db 30%,#fdf4f0 50%,#f3dcd
 .adults-msg{font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--text);line-height:1.75;opacity:.86;max-width:310px;margin:0 auto}
 .adults-msg strong{font-style:normal;font-weight:700;color:#b9962f}
 /* ── SCRATCH REVEAL (raspadito) ── */
-.scratch-wrap{position:relative;width:min(300px,78vw);aspect-ratio:3/4;margin:26px auto 0;border-radius:14px;overflow:hidden;border:2px solid rgba(201,162,39,.6);box-shadow:0 14px 40px rgba(92,31,40,.24),0 0 24px rgba(201,162,39,.28)}
+.scratch-wrap{position:relative;width:min(320px,82vw);aspect-ratio:2/3;margin:24px auto 0;border-radius:14px;overflow:hidden;border:2px solid rgba(201,162,39,.6);box-shadow:0 14px 40px rgba(92,31,40,.24),0 0 24px rgba(201,162,39,.28)}
 .scratch-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;user-select:none;-webkit-user-select:none;pointer-events:none}
 .scratch-canvas{position:absolute;inset:0;width:100%;height:100%;touch-action:none;cursor:pointer;z-index:2}
 .scratch-hint{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:6px;font-family:'Italiana',serif;font-size:13px;letter-spacing:.3em;color:#5c1f28;pointer-events:none;z-index:3;text-align:center;animation:vgFloat 2.6s ease-in-out infinite}
@@ -438,17 +438,11 @@ body{background:linear-gradient(175deg,#fbeee9 0%,#f6e2db 30%,#fdf4f0 50%,#f3dcd
       Sábado, 22 de Agosto de 2026<br>
       Las Vegas, Nevada
     </p>
-  </section>
 
-  <!-- SCRATCH REVEAL -->
-  <section class="sec rv vg-grad-blush" style="text-align:center;overflow:hidden">
-    <div class="vg-lattice"></div>
-    <span class="eyebrow">Una sorpresa para ti</span>
-    <h2 class="heading-sm vg-breath" style="color:#722f37">Raspa y Descubre</h2>
-    <div class="orn" style="margin-top:16px"><div class="orn-line"></div><div class="orn-diamond-sm"></div><div class="orn-diamond"></div><div class="orn-diamond-sm"></div><div class="orn-line"></div></div>
-    <p class="dc-text" style="margin-top:18px;font-size:16px">Desliza el dedo sobre el recuadro dorado<br>y descubre lo que te espera en Las Vegas.</p>
+    <div class="orn" style="margin-top:30px;margin-bottom:0"><div class="orn-line"></div><div class="orn-diamond-sm"></div><div class="orn-diamond"></div><div class="orn-diamond-sm"></div><div class="orn-line"></div></div>
+    <p class="dc-text" style="margin-top:22px;font-size:16px">Raspa el recuadro dorado<br>y descubre nuestra sorpresa.</p>
     <div class="scratch-wrap" id="scratchWrap">
-      <img class="scratch-img" src="scratch-reveal.jpg" alt="Sorpresa de Daniela y Ladislao" draggable="false">
+      <img class="scratch-img" src="scratch-reveal.jpg" alt="Invitación de Daniela y Ladislao a Las Vegas" draggable="false">
       <canvas class="scratch-canvas" id="scratchCanvas"></canvas>
       <div class="scratch-hint" id="scratchHint">
         <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 13V5a2 2 0 1 1 4 0v6"/><path d="M12 11V4a2 2 0 1 1 4 0v7"/><path d="M16 12a2 2 0 1 1 4 0v3a7 7 0 0 1-7 7h-1a7 7 0 0 1-6-3.5L4 15a2 2 0 0 1 3.5-2l1.5 2"/></svg>
@@ -853,7 +847,7 @@ function initScratch(){
   function scratch(e){
     if(!drawing||revealed)return;
     var p=pos(e);
-    ctx.beginPath(); ctx.arc(p.x,p.y,Math.max(18,canvas.width*0.075),0,7); ctx.fill();
+    ctx.beginPath(); ctx.arc(p.x,p.y,Math.max(34,canvas.width*0.15),0,7); ctx.fill();
     if(!hintHidden){ hintHidden=true; var h=document.getElementById('scratchHint'); if(h) h.style.opacity=0; }
     moves++; if(moves%7===0) checkPct();
   }
@@ -862,7 +856,7 @@ function initScratch(){
       var d=ctx.getImageData(0,0,canvas.width,canvas.height).data;
       var clear=0,total=0;
       for(var i=3;i<d.length;i+=640){ total++; if(d[i]<40) clear++; }
-      if(total && clear/total>0.52) reveal();
+      if(total && clear/total>0.42) reveal();
     }catch(e){}
   }
   function reveal(){
